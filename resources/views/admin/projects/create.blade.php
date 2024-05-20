@@ -2,6 +2,18 @@
 
 @section('content')
     <div class="container p-5">
+
+        @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+
         <div class="d-flex align-items-center justify-content-between">
             <h1>Add new comic</h1>
             <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">
@@ -19,7 +31,7 @@
                     aria-describedby="nameHelper" placeholder="Lavarel-project" value="{{ old('name') }}" />
                 <small id="nameHelper" class="form-text text-muted">Type a name for the current project</small>
 
-                @error('title')
+                @error('name')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
@@ -28,8 +40,8 @@
                 <label for="status" class="form-label">Status</label>
                 <select class="form-select form-select-lg" name="status" id="status">
                     <option value="0">Completed</option>
-                    <option value="1" selected>Incompleted</option>
-                    <option value="2">don't initialized</option>
+                    <option value="1">Incompleted</option>
+                    <option value="2" selected>don't initialized</option>
                 </select>
             </div>
 
@@ -41,7 +53,7 @@
                     value="{{ old('start_date') }}" />
                 <small id="startDateHelper" class="form-text text-muted">Type a start date for the current project</small>
 
-                @error('price')
+                @error('start_date')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
@@ -53,7 +65,7 @@
                     value="{{ old('finish_date') }}" />
                 <small id="finishDateHelper" class="form-text text-muted">Type a finish date for the current project</small>
 
-                @error('thumb')
+                @error('finish_date')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>

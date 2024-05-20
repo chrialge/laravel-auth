@@ -2,7 +2,18 @@
 
 @section('content')
     <div class="container py-5">
+        <div class="d-flex align-items-center justify-content-end gap-2">
+            <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+
+            <a class="btn btn-dark" href="{{ route('admin.projects.edit', $project) }}"> <i
+                    class="fas fa-pencil-alt fa-sm fa-fw"></i>
+            </a>
+
+        </div>
         <div class="d-flex justify-content-between align-items-lg-center py-5">
+
             <div class="col">
                 <h3 class=" d-inline">Project Name: </h3>
                 <span style="font-size: 30px;">{{ $project->name }}</span>
