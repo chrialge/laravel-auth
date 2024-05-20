@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -14,7 +15,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        dd(Project::all());
+
+
+        return view('admin.projects.index', ['projects' => Project::orderByDesc('id')->paginate(8)]);
     }
 
     /**
@@ -22,7 +25,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -30,7 +33,12 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+
+        $val_data = $request->validated();
+
+        $val_data['slug'] = Str::slug($val_data['name'], '-');
+        Project::create($val_data);
+        return to_route('admin.projects.index');
     }
 
     /**
@@ -38,7 +46,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -46,7 +54,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -54,7 +62,9 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $val_data = $request->validated();
+        $project->update($val_data);
+        return to_route('admin.projects.show', $project);
     }
 
     /**
@@ -62,6 +72,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->back();
     }
 }
