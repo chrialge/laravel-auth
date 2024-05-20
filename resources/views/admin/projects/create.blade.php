@@ -15,7 +15,7 @@
 
 
         <div class="d-flex align-items-center justify-content-between">
-            <h1>Add new comic</h1>
+            <h1>Add new Project</h1>
             <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>

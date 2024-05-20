@@ -37,6 +37,7 @@ class ProjectController extends Controller
         $val_data = $request->validated();
 
         $val_data['slug'] = Str::slug($val_data['name'], '-');
+        // dd($val_data['slug'], $val_data);
         Project::create($val_data);
         return to_route('admin.projects.index');
     }
@@ -63,6 +64,8 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $val_data = $request->validated();
+        $val_data['slug'] = Str::slug($val_data['name'], '-');
+        // dd($val_data['slug'], $val_data);
         $project->update($val_data);
         return to_route('admin.projects.show', $project);
     }

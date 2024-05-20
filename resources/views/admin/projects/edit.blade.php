@@ -2,8 +2,18 @@
 
 @section('content')
     <div class="container p-5">
+
+        @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="d-flex align-items-center justify-content-between">
-            <h1>Add new comic</h1>
+            <h1>Edit project</h1>
             <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
