@@ -26,10 +26,13 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm position-fixed top-0 w-100">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_laravel">
+                        <img src="https://avatars.githubusercontent.com/u/112910791?s=96&amp;v=4" alt="@chrialge"
+                            size="55" height="55" width="55" data-view-component="true"
+                            class=" rounded-circle">
 
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
@@ -45,7 +48,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">{{ __('Dashboard') }}</a>
+                            <a class="nav-link" href="{{ url('admin') }}">{{ __('Dashboard') }}</a>
 
                         </li>
                         <li class=" nav-item">
@@ -92,7 +95,7 @@
             </div>
         </nav>
 
-        <main class="">
+        <main class=" bg-body-tertiary" style="padding-top: 100px">>
             @yield('content')
         </main>
     </div>

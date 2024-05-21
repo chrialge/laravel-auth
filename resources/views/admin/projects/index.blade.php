@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container py-5">
+    <div class="container">
         <div class="d-flex align-items-center justify-content-between py-5">
             <h3>Projects</h3>
             <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">
