@@ -19,6 +19,7 @@ class ProjectSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             $newProject = new Project();
             $newProject->name = $faker->word(5, true);
+            $newProject->url = $faker->url();
             $newProject->slug = Str::slug($newProject->name);
             $newProject->start_date = date("Y-m-d");
             $newProject->finish_date = $faker->dateTimeBetween($newProject->start_date, '+3 days');

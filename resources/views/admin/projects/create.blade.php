@@ -3,16 +3,7 @@
 @section('content')
     <div class="container p-5">
 
-        @if ($errors->any())
-            <div class="alert alert-danger" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
+        @include('partials.validate')
 
         <div class="d-flex align-items-center justify-content-between">
             <h1>Add new Project</h1>
@@ -32,6 +23,18 @@
                 <small id="nameHelper" class="form-text text-muted">Type a name for the current project</small>
 
                 @error('name')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+
+            <div class="mb-3">
+                <label for="url" class="form-label">URL</label>
+                <input type="text" class="form-control @error('url') is-invalid @enderror" name="url" id="url"
+                    aria-describedby="urlHelper" placeholder="Https://" value="{{ old('url') }}" />
+                <small id="urlHelper" class="form-text text-muted">Type a url for the current project</small>
+
+                @error('url')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>

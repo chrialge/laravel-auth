@@ -25,7 +25,7 @@
                 <span><strong>Finish date:</strong> {{ $project->finish_date }}</span>
             </div>
         </div>
-        <h5 class=" d-inline">Status: </h5>
+        <h5 class=" d-inline py-2">Status: </h5>
         @if ($project->status == 0)
             <span>
                 Completed
@@ -43,12 +43,13 @@
             </span>
         @endif
 
+        <span class="d-block py-2"><strong>URL: </strong> {{ $project->url }}</span>
 
-        <p>
+        <p class="py-2">
             <strong>Description:</strong>
             {{ $project->description }}
         </p>
-        <p>
+        <p class="py-2">
             <strong>Notes:</strong>
             {{ $project->notes }}
         </p>

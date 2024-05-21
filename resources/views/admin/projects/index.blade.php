@@ -8,12 +8,15 @@
                 Add Project
             </a>
         </div>
+
+        @include('partials.session')
         <div class="table-responsive">
             <table class="table table-primary">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Url</th>
                         <th scope="col">slug</th>
                         <th scope="col">Start Date</th>
                         <th scope="col">Finish Date</th>
@@ -28,6 +31,7 @@
                         <tr class="">
                             <td scope="row">{{ $project->id }}</td>
                             <td>{{ $project->name }}</td>
+                            <td>{{ $project->url }}</td>
                             <td>{{ $project->slug }}</td>
                             <td>{{ $project->start_date }}</td>
                             <td>{{ $project->finish_date }}</td>
