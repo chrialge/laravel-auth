@@ -13,7 +13,7 @@
         </div>
 
         {{-- @include('partials.validator_error') --}}
-        <form action="{{ route('admin.projects.update', $project) }}" method="post">
+        <form action="{{ route('admin.projects.update', $project) }}" method="post" enctype="multipart/form-data">
             @csrf
 
             @method('PUT')
@@ -24,6 +24,19 @@
                 <small id="nameHelper" class="form-text text-muted">Type a name for the current project</small>
 
                 @error('name')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+
+            <div class="mb-3">
+                <label for="cover_image" class="form-label">Image</label>
+                <input type="file" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image"
+                    id="cover_image" aria-describedby="urlHelper" placeholder="Https://"
+                    value="{{ old('cover_image', $project->cover_image) }}" />
+                <small id="urlHelper" class="form-text text-muted">Type a cover_image for the current project</small>
+
+                @error('cover_image')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
@@ -39,6 +52,7 @@
                 @enderror
             </div>
 
+
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
                 <select class="form-select form-select-lg" name="status" id="status">
@@ -53,7 +67,7 @@
                 <label for="start_date" class="form-label">Start Date</label>
                 <input type="text" class="form-control @error('start_date') is-invalid @enderror" name="start_date"
                     id="start_date" aria-describedby="startDateHelper" placeholder="2024-03-20"
-                    value="{{ old('start_date', $project->star_date) }}" />
+                    value="{{ old('start_date', $project->start_date) }}" />
                 <small id="startDateHelper" class="form-text text-muted">Type a start date for the current project</small>
 
                 @error('start_date')

@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -33,12 +34,17 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-
+        // dd($request->all());
         $val_data = $request->validated();
 
         $val_data['slug'] = Str::slug($val_data['name'], '-');
 
         $name = $val_data['name'];
+        if ($request->has('cover_image')) {
+            $val_data['cover_image'] = Storage::disk('public')->put('uploads', $val_data['cover_image']);
+        }
+
+        // dd($val_data['cover_image']);
         // dd($val_data['slug'], $val_data);
         Project::create($val_data);
 
@@ -66,9 +72,22 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        // dd($request->all());
         $val_data = $request->validated();
         $val_data['slug'] = Str::slug($val_data['name'], '-');
         // dd($val_data['slug'], $val_data);
+
+        // dd($val_data['cover_image']);
+        // dd($project->cover_image);
+        if ($request->has('cover_image')) {
+
+            if ($project->cover_image) {
+                Storage::disk('public')->delete($project->cover_image);
+            }
+            $val_data['cover_image'] = Storage::disk('public')->put('uploads', $val_data['cover_image']);
+        }
+
+        // dd($project['cover_image'], $project->cover_image);
         $project->update($val_data);
         return to_route('admin.projects.index', $project)->with('message', "You updated project: $project->name");
     }
@@ -78,6 +97,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->cover_image) {
+            Storage::disk('public')->delete($project->cover_image);
+        }
         $project->delete();
         return redirect()->back()->with('message', "You delete  project: $project->name");;
     }

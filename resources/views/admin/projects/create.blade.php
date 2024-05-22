@@ -13,7 +13,7 @@
         </div>
 
         {{-- @include('partials.validator_error') --}}
-        <form action="{{ route('admin.projects.store') }}" method="post">
+        <form action="{{ route('admin.projects.store') }}" method="post" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
@@ -35,6 +35,20 @@
                 <small id="urlHelper" class="form-text text-muted">Type a url for the current project</small>
 
                 @error('url')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+
+            <div class="mb-3">
+                <label for="cover_image" class="form-label">Image</label>
+                <input type="file" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image"
+                    id="cover_image" aria-describedby="cover_imageHelper" placeholder="Https://"
+                    value="{{ old('cover_image') }}" />
+                <small id="cover_imageHelper" class="form-text text-muted">Type a cover_image for the current
+                    project</small>
+
+                @error('cover_image')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>

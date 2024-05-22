@@ -17,7 +17,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Url</th>
-                        <th scope="col">slug</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Start Date</th>
                         <th scope="col">Finish Date</th>
                         <th scope="col">Notes</th>
@@ -32,7 +32,17 @@
                             <td scope="row">{{ $project->id }}</td>
                             <td>{{ $project->name }}</td>
                             <td>{{ $project->url }}</td>
-                            <td>{{ $project->slug }}</td>
+
+                            <td>
+                                @if (Str::contains($project->cover_image, ['https://', 'http://']))
+                                    <img src="{{ $project->cover_image }}" alt="Image of project: {{ $project->title }}">
+                                @else
+                                    <img width="140" src="{{ asset('storage/' . $project->cover_image) }}"
+                                        alt="Image of project: {{ $project->title }}">
+                                @endif
+
+
+                            </td>
                             <td>{{ $project->start_date }}</td>
                             <td>{{ $project->finish_date }}</td>
                             <td>{{ $project->notes }}</td>

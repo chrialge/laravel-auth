@@ -12,9 +12,18 @@
             </a>
 
         </div>
+        <div class="image_project">
+            @if (Str::contains($project->cover_image, 'https://'))
+                <img src="{{ $project->cover_image }}" alt="Image of project: {{ $project->title }}">
+            @else
+                <img width="140" src="{{ asset('storage/' . $project->cover_image) }}"
+                    alt="Image of project: {{ $project->title }}">
+            @endif
+        </div>
         <div class="d-flex justify-content-between align-items-lg-center py-5">
 
             <div class="col">
+
                 <h3 class=" d-inline">Project Name: </h3>
                 <span style="font-size: 30px;">{{ $project->name }}</span>
             </div>
