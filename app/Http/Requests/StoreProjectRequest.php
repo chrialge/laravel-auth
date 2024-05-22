@@ -23,7 +23,7 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'name' => 'required| min: 5|max:150',
-            'url' => 'nullable',
+            'url' => 'nullable|url',
             'cover_image' => 'nullable|image|max:500',
             'video' => 'nullable',
             'start_date' => 'nullable|date',

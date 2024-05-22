@@ -43,6 +43,7 @@ class ProjectController extends Controller
         if ($request->has('cover_image')) {
             $val_data['cover_image'] = Storage::disk('public')->put('uploads', $val_data['cover_image']);
         }
+        dd($val_data['video']);
 
         // dd($val_data['cover_image']);
         // dd($val_data['slug'], $val_data);

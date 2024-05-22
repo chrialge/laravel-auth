@@ -54,6 +54,17 @@
             </div>
 
             <div class="mb-3">
+                <label for="video" class="form-label">video</label>
+                <input type="file" class="form-control @error('video') is-invalid @enderror" name="video"
+                    id="video" aria-describedby="urlHelper" value="{{ old('video') }}" />
+                <small id="urlHelper" class="form-text text-muted">Type a video for the current project</small>
+
+                @error('video')
+                    <div class="text-video">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
                 <select class="form-select form-select-lg" name="status" id="status">
                     <option value="0">Completed</option>

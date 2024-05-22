@@ -28,19 +28,6 @@
                 @enderror
             </div>
 
-
-            <div class="mb-3">
-                <label for="cover_image" class="form-label">Image</label>
-                <input type="file" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image"
-                    id="cover_image" aria-describedby="urlHelper" placeholder="Https://"
-                    value="{{ old('cover_image', $project->cover_image) }}" />
-                <small id="urlHelper" class="form-text text-muted">Type a cover_image for the current project</small>
-
-                @error('cover_image')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-
             <div class="mb-3">
                 <label for="url" class="form-label">URL</label>
                 <input type="text" class="form-control @error('url') is-invalid @enderror" name="url" id="url"
@@ -51,6 +38,29 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
+
+            <div class="mb-3">
+                <label for="cover_image" class="form-label">Image</label>
+                <input type="file" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image"
+                    id="cover_image" aria-describedby="urlHelper" value="{{ old('cover_image', $project->cover_image) }}" />
+                <small id="urlHelper" class="form-text text-muted">Type a cover_image for the current project</small>
+
+                @error('cover_image')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="video" class="form-label">video</label>
+                <input type="file" class="form-control @error('video') is-invalid @enderror" name="video"
+                    id="video" aria-describedby="urlHelper" value="{{ old('video', $project->video) }}" />
+                <small id="urlHelper" class="form-text text-muted">Type a video for the current project</small>
+
+                @error('video')
+                    <div class="text-video">{{ $message }}</div>
+                @enderror
+            </div>
+
 
 
             <div class="mb-3">
