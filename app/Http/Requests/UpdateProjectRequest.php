@@ -24,6 +24,8 @@ class UpdateProjectRequest extends FormRequest
         return [
             'name' => 'required',
             'url' => 'required',
+            'cover_image' => 'nullable|image|max:500',
+            'video' => 'nullable',
             'status' => 'required',
             'start_date' => 'required',
             'finish_date' => 'nullable',

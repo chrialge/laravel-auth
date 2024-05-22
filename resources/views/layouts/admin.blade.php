@@ -26,7 +26,8 @@
     <div id="app">
 
 
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm position-fixed top-0 w-100">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm position-fixed top-0 w-100"
+            style="z-index: 5">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_laravel">
