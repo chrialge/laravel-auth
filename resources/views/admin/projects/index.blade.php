@@ -20,7 +20,6 @@
                         <th scope="col">Image</th>
                         <th scope="col">Start Date</th>
                         <th scope="col">Finish Date</th>
-                        <th scope="col">Notes</th>
                         <th scope="col">Status</th>
                         <th scope="col">Actions</th>
                     </tr>
@@ -45,7 +44,6 @@
                             </td>
                             <td>{{ $project->start_date }}</td>
                             <td>{{ $project->finish_date }}</td>
-                            <td>{{ $project->notes }}</td>
                             @if ($project->status == 0)
                                 <td><i class="fa-solid fa-circle" style="color: #0fd212;"></i></td>
                             @elseif ($project->status == 1)

@@ -41,9 +41,12 @@ class ProjectController extends Controller
 
         $name = $val_data['name'];
         if ($request->has('cover_image')) {
-            $val_data['cover_image'] = Storage::disk('public')->put('uploads', $val_data['cover_image']);
+            $val_data['cover_image'] = Storage::disk('public')->put('uploads/images', $val_data['cover_image']);
         }
-        dd($val_data['video']);
+        if ($request->has('video')) {
+            $val_data['video'] = Storage::disk('public')->put('uploads/videos', $val_data['video']);
+        }
+
 
         // dd($val_data['cover_image']);
         // dd($val_data['slug'], $val_data);
@@ -85,7 +88,16 @@ class ProjectController extends Controller
             if ($project->cover_image) {
                 Storage::disk('public')->delete($project->cover_image);
             }
-            $val_data['cover_image'] = Storage::disk('public')->put('uploads', $val_data['cover_image']);
+            $val_data['cover_image'] = Storage::disk('public')->put('uploads/images', $val_data['cover_image']);
+        }
+
+        if ($request->has('video')) {
+
+            if ($project->video) {
+                Storage::disk('public')->delete($project->video);
+            }
+
+            $val_data['video'] = Storage::disk('public')->put('uploads/videos', $val_data['video']);
         }
 
         // dd($project['cover_image'], $project->cover_image);
@@ -100,6 +112,10 @@ class ProjectController extends Controller
     {
         if ($project->cover_image) {
             Storage::disk('public')->delete($project->cover_image);
+        }
+
+        if ($project->video) {
+            Storage::disk('public')->delete($project->video);
         }
         $project->delete();
         return redirect()->back()->with('message', "You delete  project: $project->name");;

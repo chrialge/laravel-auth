@@ -34,34 +34,55 @@
                 <span><strong>Finish date:</strong> {{ $project->finish_date }}</span>
             </div>
         </div>
-        <h5 class=" d-inline py-2">Status: </h5>
-        @if ($project->status == 0)
-            <span>
-                Completed
-                <td><i class="fa-solid fa-circle" style="color: #0fd212;"></i></td>
-            </span>
-        @elseif ($project->STATUS == 1)
-            <span>
-                Incompleted
-                <td><i class="fa-solid fa-circle" style="color: #ebee53;"></i></td>
-            </span>
-        @else
-            <span>
-                don't initialized
-                <td><i class="fa-solid fa-circle" style="color: #fa0000;"></i></td>
-            </span>
-        @endif
+        <div class="row">
+            <div class="col-6">
+                <h5 class=" d-inline py-2">Status: </h5>
+                @if ($project->status == 0)
+                    <span>
+                        Completed
+                        <td><i class="fa-solid fa-circle" style="color: #0fd212;"></i></td>
+                    </span>
+                @elseif ($project->STATUS == 1)
+                    <span>
+                        Incompleted
+                        <td><i class="fa-solid fa-circle" style="color: #ebee53;"></i></td>
+                    </span>
+                @else
+                    <span>
+                        don't initialized
+                        <td><i class="fa-solid fa-circle" style="color: #fa0000;"></i></td>
+                    </span>
+                @endif
 
-        <span class="d-block py-2"><strong>URL: </strong> {{ $project->url }}</span>
+                <span class="d-block py-2"><strong>URL: </strong> {{ $project->url }}</span>
 
-        <p class="py-2">
-            <strong>Description:</strong>
-            {{ $project->description }}
-        </p>
-        <p class="py-2">
-            <strong>Notes:</strong>
-            {{ $project->notes }}
-        </p>
+                <p class="py-2">
+                    <strong>Description:</strong>
+                    {{ $project->description }}
+                </p>
+
+            </div>
+            <div class="col-6">
+                <h5>Videos:</h5>
+                <p class="py-2">
+                    <strong>Notes:</strong>
+                    {{ $project->notes }}
+                </p>
+                @if (isset($project->video))
+                    <video width="320" height="240" controls>
+                        @if (Str::finish($project->video, '.mp4'))
+                            <source src="{{ asset('storage/' . $project->video) }}" type="video/mp4">
+                        @elseif (Str::finish($project->video, '.webm'))
+                            <source src="{{ asset('storage/' . $project->video) }}" type="video/webm">
+                        @endif
+
+
+                    </video>
+                @endif
+
+            </div>
+        </div>
+
 
 
     </div>
