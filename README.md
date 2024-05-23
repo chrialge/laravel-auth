@@ -1,4 +1,4 @@
-# Instruction
+## Instruction
 
 Ciao @qui, creiamo con Laravel il nostro sistema di gestione del nostro Portfolio di progetti.
 Oggi iniziamo un nuovo progetto che si arricchirà nel corso delle prossime lezioni: man mano aggiungeremo funzionalità e vedremo la nostra applicazione crescere ed evolvere.
@@ -13,3 +13,17 @@ Iniziamo con il definire il layout, modello, migrazione, controller e rotte nece
 -   Per la parte di back-office creiamo un resource controller Admin\ProjectController per gestire tutte le operazioni CRUD dei progetti
     Bonus
     Implementiamo la validazione dei dati dei Progetti nelle operazioni CRUD che lo richiedono usando le form requests.
+
+## Instruction
+
+Ripercorrete gli steps visti a lezione e completate le operazioni CRUD (edit/update/delete)
+
+# Bonus:
+
+Aggiungete i messaggi di sessione quando fare il redirect dopo aver creato, aggiornato e cancellato una risorsa.
+
+## Instruction 3
+
+Ciao @qui, continuiamo a lavorare nella repo dei giorni scorsi e aggiungiamo un’immagine ai nostri progetti.
+Ricordiamoci di creare il symlink con l’apposito comando artisan e di aggiungere l’attributo enctype="multipart/form-data" ai form di creazione e di modifica!
+Ricordate di implementare anche la cancellazione dell'immagine esistente qualora il post venda eliminato completamente.
